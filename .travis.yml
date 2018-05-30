@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+- 7
+- 6
+cache:
+  yarn: true
+  directories:
+  - node_modules
+before_install:
+- sudo apt-get -qq update
+install:
+- yarn
+script:
+- cp .env.example .env
+- yarn test
+- yarn build
+deploy:
+  provider: npm
+  email: admin@bcventures.io
+  api_key:
+    secure: KhRo/bfM+TfPjcNomkgqbwZOtV/ef71I9WYXYb5E1pIVOquoPtvrphcT85hBkINwn+v3Cbvodw7SJDK8AChBOeIctQiniMRwpfqxb5lG/+sH8l5Ltx/IXzYcetBJYGXu+WCYqpcqtME8YG3r0u8aa0NCuWcToNYrfL8qPQDaqwUaFqU5pkaIzcbWhdWSOGY8S/BD2ehkqOp2IP+EdffM+uslIY29fBAwQBqNwTmDMJu1+EZ5AHl5ns/9grWbnlKg32OeJDLQssfH8LR/qMHnqsxaJTshz3sP3gIvj5Sb6XmW2X55K8FPd80j09Jc/7VUJm7VfubjfDWGLjzaTE1Xe4KlxKWnlEg31YwfMqJWWRcdUvp1FJV2SGUayDmP7c9n6nxzchvbMesrdrN6dJG/2HKpzWqMCkCB0lYXhZC9LhBWIPLoJq8YXkUX5s7LfU7AllTcbcqnFtEGJO8J+qhPpio0pww0LF5fck4MOA3JTGK9h2UF6WD07IOzlEu+WhLpJdsp6/yM+adHJJ4+8sBOvFJ/UfeZI9v1sOgq1Sa5FGKqjBdY9F/amcswoFMT80BvMgntQ4ah3dVUdYI4lais1p3vDKzJQEyxdgG0vxqzWzjTuhB2b9s9jOdvvKkb58CQ2ZclBIt2wXk8lnthKiVV2ObqL/fnshOnwK3n2khJFOY=
+  on:
+    tags: true
+    repo: Game-X-Coin/block_explorer
+    branch: master

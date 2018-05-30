@@ -1,0 +1,25 @@
+{
+  "extends": ["eslint:recommended", "react-app", "prettier"],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "jest": true,
+    "es6": true
+  },
+  "plugins": ["react", "jsx-a11y"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "no-console": "off",
+    "strict": ["error", "global"],
+    "curly": "warn",
+    "no-debugger": 0
+    // "prettier/prettier": "error"
+  }
+}
