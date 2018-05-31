@@ -1,0 +1,10 @@
+@import 'variables/all';
+@import 'base/all';
+@import 'bootstrap/all'; // customize bootstrap
+
+#app {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+}

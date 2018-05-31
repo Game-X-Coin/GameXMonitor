@@ -1,0 +1,27 @@
+.table {
+  text-align: center;
+  border: solid 0.5px #dee2e6;
+  font-size: 0.9rem;
+
+  th,
+  td {
+    padding: 1rem;
+    white-space: nowrap;
+  }
+
+  thead th {
+    font-weight: bold;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  tbody {
+    td,
+    th {
+      border: 0;
+    }
+
+    tr:nth-of-type(2n - 1) {
+      background-color: #fafafa;
+    }
+  }
+}

@@ -11,6 +11,7 @@ import stores from './stores';
 import App from './App';
 
 import 'bootstrap/scss/bootstrap.scss';
+import './styles/main.scss';
 
 ReactGA.initialize(GA_ID);
 

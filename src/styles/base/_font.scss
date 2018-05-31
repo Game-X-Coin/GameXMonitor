@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'PT_Sans-Caption';
+  font-weight: 700;
+  src: local('PT_Sans-Caption Bold'),
+    url('../media/font/PTSans-Caption/PT_Sans-Caption-Web-Bold.ttf')
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'PT_Sans-Caption';
+  font-weight: 400;
+  src: local('PT_Sans-Caption Regular'),
+    url('../media/font/PTSans-Caption/PT_Sans-Caption-Web-Regular.ttf')
+      format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 700;
+  src: local('HelveticaNeue Bold'),
+    url('../media/font/HelveticaNeue/HelveticaNeue.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: 400;
+  src: local('HelveticaNeue Regular'),
+    url('../media/font/HelveticaNeue/HelveticaNeue.ttf') format('truetype');
+}
+
+body {
+  font-family: 'HelveticaNeue', sans-serif !important;
+  color: #545454;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'PT_Sans-Caption' !important;
+  font-weight: bold;
+}
