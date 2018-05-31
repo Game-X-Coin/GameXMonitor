@@ -1,0 +1,20 @@
+@import '../../../styles/variables/zindex';
+
+.header {
+  position: fixed;
+  width: 100%;
+  padding: 0.5rem 0;
+  z-index: $zindex-header;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: transparent !important;
+
+    .logo {
+      height: 2rem;
+      width: auto;
+    }
+  }
+}
