@@ -1,0 +1,12 @@
+.table-wrapper {
+  margin-bottom: 2rem;
+  overflow: auto;
+
+  &.fetching {
+    overflow: hidden;
+  }
+
+  .loading-row {
+    height: 13rem;
+  }
+}
