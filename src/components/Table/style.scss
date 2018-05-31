@@ -1,12 +1,15 @@
 .table-wrapper {
+  display: block;
+  width: 100%;
   margin-bottom: 2rem;
-  overflow: auto;
+  overflow-x: auto;
 
-  &.fetching {
-    overflow: hidden;
+  .table {
+    width: 100%;
+    max-width: 100%;
   }
 
   .loading-row {
-    height: 13rem;
+    height: 17rem;
   }
 }

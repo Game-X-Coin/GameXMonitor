@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { Table as BootstrapTable } from 'reactstrap';
 import LoadingSpinner from '../LoadingSpinner';
 
@@ -11,7 +10,7 @@ const Table = ({
   fetching = false
 }) => {
   return (
-    <div className={classNames('table-wrapper', fetching && 'fetching')}>
+    <div className="table-wrapper">
       <BootstrapTable striped>
         <thead>{renderHeader()}</thead>
         <tbody>
