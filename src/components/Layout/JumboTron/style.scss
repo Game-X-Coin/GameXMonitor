@@ -1,0 +1,30 @@
+.jumbo-tron {
+  position: relative;
+  background: linear-gradient(-45deg, #2eca68, #019cd6);
+
+  h1 {
+    padding: 8rem 0 8rem 0;
+    max-width: 30rem;
+    color: #fff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: block;
+    height: 10rem;
+    width: 100%;
+    background-color: #fff;
+    transform-origin: 0;
+    transform: skewY(-2.5deg);
+    box-shadow: 0 -5px 5px 0px #909090;
+  }
+
+  & ~ * {
+    padding: 3rem 0;
+    z-index: 1;
+  }
+}
