@@ -1,0 +1,90 @@
+$yellow: #ffd111;
+$red: #ff4b34;
+$blue: #0070be;
+$green: #33ba20;
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    border-top-color: $yellow;
+  }
+
+  25% {
+    transform: translate(-50%, -50%) rotate(90deg);
+    border-top-color: $red;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+    border-top-color: $blue;
+  }
+
+  75% {
+    transform: translate(-50%, -50%) rotate(270deg);
+    border-top-color: $green;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    border-top-color: $yellow;
+  }
+}
+
+@keyframes delayedSpin {
+  80% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  83% {
+    transform: translate(-50%, -50%) rotate(-10deg);
+  }
+
+  85% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  95% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  97% {
+    transform: translate(-50%, -50%) rotate(370deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.75);
+
+  .circle,
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .circle {
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 100%;
+    border-top: 3px solid $yellow;
+    animation: spin 0.75s linear infinite;
+  }
+
+  .logo {
+    width: 4rem;
+    height: 4rem;
+    animation: delayedSpin 2s ease-in-out infinite;
+  }
+}
