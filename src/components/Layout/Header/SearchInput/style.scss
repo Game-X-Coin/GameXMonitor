@@ -1,0 +1,29 @@
+.search-input {
+  width: 27rem;
+
+  .field {
+    display: block;
+    padding: 0.6rem 1rem;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 0;
+    border-radius: 0;
+    font-size: 1rem;
+    transition: all 0.3s;
+
+    &,
+    &::placeholder {
+      color: #fff;
+    }
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+      &,
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}
