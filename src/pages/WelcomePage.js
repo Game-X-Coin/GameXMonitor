@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import { JumboTron } from '../../components/Layout';
-import Table from '../../components/Table';
+import Table from '../components/Table';
 
 class WelcomePage extends Component {
   render() {
     return (
       <div>
-        <JumboTron>Check GXC block and transaction information</JumboTron>
         <div className="container">
-          <h4>Lastest Transactions</h4>
+          <h4>
+            Lastest Transactions <Link to="/txs">View all transactions ></Link>
+          </h4>
           <Table
             fetching={true}
             renderHeader={() => (
@@ -34,7 +35,9 @@ class WelcomePage extends Component {
             )}
           />
 
-          <h4>Lastest Blocks</h4>
+          <h4>
+            Lastest Blocks <Link to="/blocks">View all blocks ></Link>
+          </h4>
           <Table
             renderHeader={() => (
               <tr>
@@ -48,7 +51,9 @@ class WelcomePage extends Component {
             )}
             renderBody={() => (
               <tr>
-                <th scope="row">16614400022228999619</th>
+                <th scope="row">
+                  <a href="">16614400022228999619</a>
+                </th>
                 <td>1min ago</td>
                 <td>16614400022228999619</td>
                 <td>16614400022228999619</td>
