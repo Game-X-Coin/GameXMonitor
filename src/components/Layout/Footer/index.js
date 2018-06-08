@@ -8,14 +8,16 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <img className="logo" src={logo} alt="logo" />
-        <a
-          className="d-block text-light"
-          href="mailto:support@bcventures.io"
-          title="support mail"
-        >
-          support@bcventures.io
-        </a>
-        <p className="m-0">Ⓒ 2018 blockchain ventures, All Rights Reserved</p>
+        <div>
+          <a
+            className="d-block text-light"
+            href="mailto:support@bcventures.io"
+            title="support mail"
+          >
+            support@bcventures.io
+          </a>
+          <p className="m-0">Ⓒ 2018 blockchain ventures, All Rights Reserved</p>
+        </div>
       </div>
     </footer>
   );
