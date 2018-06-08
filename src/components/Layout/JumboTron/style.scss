@@ -1,6 +1,7 @@
 .jumbo-tron {
   position: relative;
   background: linear-gradient(-45deg, #2eca68, #019cd6);
+  overflow: hidden;
 
   h1 {
     padding: 8rem 0 8rem 0;
@@ -21,10 +22,5 @@
     transform-origin: 0;
     transform: skewY(-2.5deg);
     box-shadow: 0 -5px 5px 0px #909090;
-  }
-
-  & ~ * {
-    padding: 3rem 0;
-    z-index: 1;
   }
 }

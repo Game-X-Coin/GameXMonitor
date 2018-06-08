@@ -1,30 +1,15 @@
 import React, { Component } from 'react';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap';
+import classNames from 'classnames';
+import { Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
+
+import SearchInput from './SearchInput';
+import JumboTron from '../JumboTron';
 
 import logo from '../../../media/images/logo/logo_white.svg';
 import './style.scss';
 
 class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isOpen: false
-    };
-  }
-
-  toggle() {
-    this.setState({ isOpen: !this.state.isOpen });
-  }
-
   renderLinks(links) {
     return links.map(link => (
       <NavItem className="px-3" key={link.to}>
@@ -36,25 +21,28 @@ class Header extends Component {
   }
 
   render() {
-    const links = [
+    /* const links = [
       { name: 'Wallet', to: '/wallet' },
       { name: 'Game', to: '/game' }
-    ];
+    ]; */
+
+    const isRoot = window.location.pathname === '/';
 
     return (
-      <header className="header">
-        <Navbar color="light" light expand="md" className="container">
-          <NavbarBrand tag={Link} to="/">
-            <img className="logo" src={logo} alt="logo" />
-          </NavbarBrand>
-          <NavbarToggler onClick={() => this.toggle()} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              {this.renderLinks(links)}
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </header>
+      <React.Fragment>
+        <header className={classNames('header', isRoot && 'root')}>
+          <Navbar className="container">
+            <NavbarBrand tag={Link} to="/">
+              <img className="logo" src={logo} alt="logo" />
+            </NavbarBrand>
+            <SearchInput />
+          </Navbar>
+        </header>
+
+        {isRoot && (
+          <JumboTron>Check GXC block and transaction information</JumboTron>
+        )}
+      </React.Fragment>
     );
   }
 }
