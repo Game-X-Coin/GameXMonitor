@@ -1,1 +1,5 @@
-export default {};
+import dataStore from './dataStore';
+
+export default {
+  dataStore
+};
