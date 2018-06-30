@@ -1,12 +1,23 @@
 .table {
-  text-align: center;
+  margin-bottom: 2rem;
   border: solid 0.5px #dee2e6;
   font-size: 0.9rem;
 
+  &.vertical {
+    th {
+      text-align: left;
+    }
+
+    td {
+      text-align: right;
+    }
+  }
+
   th,
   td {
-    padding: 1rem;
-    white-space: nowrap;
+    padding: 1rem 1.5rem;
+    vertical-align: middle;
+    text-align: center;
   }
 
   thead th {
