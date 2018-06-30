@@ -1,9 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import classNames from 'classnames';
+
 import './style.scss';
 
-const LoadingSpinner = () => {
-  return (
-    <div className="loading-spinner">
+const LoadingSpinner = props => {
+  const Element = p => (
+    <div className={classNames('loading-spinner', p.className)}>
       <div className="circle" />
 
       <svg className="logo" viewBox="0 0 164 133">
@@ -28,6 +31,15 @@ const LoadingSpinner = () => {
       </svg>
     </div>
   );
+
+  if (props.global) {
+    return ReactDOM.createPortal(
+      <Element className="global" />,
+      document.querySelector('body')
+    );
+  }
+
+  return <Element />;
 };
 
 export default LoadingSpinner;

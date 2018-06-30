@@ -1,3 +1,5 @@
+@import '../../styles/variables/zindex';
+
 $yellow: #ffd111;
 $red: #ff4b34;
 $blue: #0070be;
@@ -63,7 +65,11 @@ $green: #33ba20;
   bottom: 0;
   right: 0;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.75);
+
+  &.global {
+    position: fixed;
+    z-index: $zindex-spinner;
+  }
 
   .circle,
   .logo {
