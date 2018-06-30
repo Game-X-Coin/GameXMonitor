@@ -1,68 +1,44 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
-import Table from '../components/Table';
+import { BlockList } from '../views/block';
+import { Header } from '../components/Pages';
 
+@inject('dataStore')
+@observer
 class WelcomePage extends Component {
+  constructor() {
+    super();
+    this.interval = null;
+  }
+
+  componentDidMount() {
+    const { getBlocks } = this.props.dataStore;
+
+    getBlocks();
+
+    this.interval = setInterval(() => {
+      getBlocks();
+    }, 3000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
+    const { blocks } = this.props.dataStore;
+
     return (
       <div>
-        <div className="container">
-          <h4>
-            Lastest Transactions <Link to="/txs">View all transactions ></Link>
-          </h4>
-          <Table
-            fetching={true}
-            renderHeader={() => (
-              <tr>
-                <th>ID</th>
-                <th>Timestamp</th>
-                <th>Sender</th>
-                <th>Recipent</th>
-                <th>Amount (GXC)</th>
-                <th>Fee (GXC)</th>
-              </tr>
-            )}
-            renderBody={() => (
-              <tr>
-                <th scope="row">16614400022228999619</th>
-                <td>1min ago</td>
-                <td>16614400022228999619</td>
-                <td>16614400022228999619</td>
-                <td>123,123</td>
-                <td>0.1</td>
-              </tr>
-            )}
-          />
-
-          <h4>
-            Lastest Blocks <Link to="/blocks">View all blocks ></Link>
-          </h4>
-          <Table
-            renderHeader={() => (
-              <tr>
-                <th>ID</th>
-                <th>Timestamp</th>
-                <th>Sender</th>
-                <th>Recipent</th>
-                <th>Amount (GXC)</th>
-                <th>Fee (GXC)</th>
-              </tr>
-            )}
-            renderBody={() => (
-              <tr>
-                <th scope="row">
-                  <a href="">16614400022228999619</a>
-                </th>
-                <td>1min ago</td>
-                <td>16614400022228999619</td>
-                <td>16614400022228999619</td>
-                <td>123,123</td>
-                <td>0.1</td>
-              </tr>
-            )}
-          />
-        </div>
+        <Header>
+          Lastest Blocks
+          <Link className="h6 font-weight-normal" to="/blocks">
+            View all blocks >
+          </Link>
+        </Header>
+        <BlockList blocks={blocks} />
       </div>
     );
   }
