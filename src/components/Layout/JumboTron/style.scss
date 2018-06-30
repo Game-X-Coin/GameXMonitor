@@ -1,6 +1,8 @@
+@import '../../../styles/variables/color';
+
 .jumbo-tron {
   position: relative;
-  background: linear-gradient(-45deg, #2eca68, #019cd6);
+  background: $gradient;
   overflow: hidden;
 
   h1 {

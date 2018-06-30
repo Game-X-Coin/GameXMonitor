@@ -16,7 +16,7 @@ const Footer = () => {
           >
             support@bcventures.io
           </a>
-          <p className="m-0">Ⓒ 2018 blockchain ventures, All Rights Reserved</p>
+          <p className="m-0">Ⓒ 2018 GXC World Pte Ltd</p>
         </div>
       </div>
     </footer>
