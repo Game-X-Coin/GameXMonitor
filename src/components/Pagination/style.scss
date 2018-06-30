@@ -1,0 +1,45 @@
+@import '../../styles/variables/color';
+
+.r-pagination {
+  display: flex;
+  justify-content: center;
+
+  a {
+    position: relative;
+    padding: 0.7rem 1.5rem;
+    margin: 0 1rem;
+    width: 10rem;
+    text-align: center;
+    border-style: solid;
+    border-image: $gradient;
+    border-image-slice: 1;
+    border-image-width: 5px;
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.3;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+      background: $gradient;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
