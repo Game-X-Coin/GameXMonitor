@@ -6,7 +6,7 @@ const defaultHeaders = {};
 
 const defaultOptions = {
   baseURL: API_ENDPOINT,
-  method: 'get'
+  method: 'post'
 };
 
 const request = options => {
