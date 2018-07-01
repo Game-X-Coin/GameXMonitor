@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
+import { observable, action, runInAction } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
 import { BlockList } from '../views/block';
 import { Header } from '../components/Pages';
 
+import { chainAPI } from '../services/api';
+
 @inject('dataStore')
 @observer
 class WelcomePage extends Component {
-  constructor() {
-    super();
-    this.interval = null;
-  }
+  interval = null;
+
+  @observable lastestBlock;
+  @observable blocks = [];
 
   componentDidMount() {
-    const { getBlocks } = this.props.dataStore;
-
-    getBlocks();
+    this.request();
 
     this.interval = setInterval(() => {
-      getBlocks();
+      this.request();
     }, 3000);
   }
 
@@ -27,9 +28,32 @@ class WelcomePage extends Component {
     clearInterval(this.interval);
   }
 
-  render() {
-    const { blocks } = this.props.dataStore;
+  @action
+  async request() {
+    const {
+      chain: { head_block_num }
+    } = this.props.dataStore;
 
+    let end = head_block_num;
+    let start = head_block_num - 20;
+
+    if (this.lastestBlock && this.lastestBlock !== head_block_num) {
+      start = this.lastestBlock + 1;
+    }
+
+    console.log(start, end);
+
+    for (let i = start; i <= end; i++) {
+      const block = await chainAPI.getBlock(i);
+
+      runInAction(() => {
+        this.blocks = [block, ...this.blocks].slice(0, 20);
+        this.lastestBlock = i;
+      });
+    }
+  }
+
+  render() {
     return (
       <div>
         <Header>
@@ -38,7 +62,7 @@ class WelcomePage extends Component {
             View all blocks >
           </Link>
         </Header>
-        <BlockList blocks={blocks} />
+        <BlockList blocks={this.blocks} />
       </div>
     );
   }
