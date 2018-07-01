@@ -29,7 +29,7 @@ class TxPage extends Component {
         <TxSingle transaction={transaction} />
 
         <Header>Actions</Header>
-        {fetched && actions.length ? (
+        {fetched && actions && actions.length ? (
           <ActionList actions={actions} />
         ) : (
           <EmptyState>There are no actions in this transaction</EmptyState>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 import Table from '../../components/Table';
 
@@ -22,7 +23,7 @@ class TxSingle extends Component {
               </td>
             </tr>
             <tr>
-              <th>Ref block</th>
+              <th>Block</th>
               <td>
                 <Link to={`/blocks/${transaction.block_num}`}>
                   {transaction.block_num}
@@ -31,7 +32,10 @@ class TxSingle extends Component {
             </tr>
             <tr>
               <th>Timestamp</th>
-              <td>{transaction.block_time}</td>
+              <td>
+                {transaction.block_time &&
+                  dayjs(transaction.block_time).format('YYYY/MM/DD hh:mm:ss')}
+              </td>
             </tr>
             <tr>
               <th>Delay</th>

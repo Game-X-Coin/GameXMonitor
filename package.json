@@ -9,8 +9,7 @@
     "analyze": "source-map-explorer build/static/js/app.*",
     "precommit": "lint-staged",
     "lint-js": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" .",
-    "lint-css":
-      "stylelint \"src/**/*.{css,less,styl,scss,sass,sss}\" --syntax scss",
+    "lint-css": "stylelint \"src/**/*.{css,less,styl,scss,sass,sss}\" --syntax scss",
     "lint": "yarn run lint-js && yarn run lint-css",
     "fix-js": "yarn run lint-js --fix",
     "fix-css": "yarn run lint-css --fix .",
@@ -22,15 +21,18 @@
     "test-coverage": "jest --coverage",
     "coverage": "yarn run test-cover && opn coverage/lcov-report/index.html",
     "fake-server": "json-server --p 1337 --w ./fake-server.json",
-    "start":
-      "webpack-dev-server --inline --hot --config config/webpack.config.dev.js",
+    "start": "webpack-dev-server --inline --hot --config config/webpack.config.dev.js",
     "build": "rimraf ./build && webpack --config config/webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Game-X-Coin/block_explorer"
   },
-  "keywords": ["react", "reactjs", "mobx"],
+  "keywords": [
+    "react",
+    "reactjs",
+    "mobx"
+  ],
   "author": "GXC",
   "license": "MIT",
   "bugs": {
@@ -38,8 +40,14 @@
   },
   "flow": "flow",
   "lint-staged": {
-    "*.{js,jsx,mjs}": ["eslint --no-ignore --fix", "git add --force"],
-    "*.{json,md}": ["prettier --write", "git add --force"]
+    "*.{js,jsx,mjs}": [
+      "eslint --no-ignore --fix",
+      "git add --force"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add --force"
+    ]
   },
   "pre-commit": "lint-staged",
   "devDependencies": {
@@ -112,12 +120,14 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.1.0",
     "classnames": "^2.2.5",
+    "dayjs": "^1.6.10",
     "mobx": "^4.2.0",
     "mobx-react": "^5.1.2",
     "mobx-react-devtools": "^5.0.1",
     "mobx-react-router": "^4.0.2",
     "object-assign": "4.1.1",
     "promise": "8.0.1",
+    "query-string": "^6.1.0",
     "raf": "3.4.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

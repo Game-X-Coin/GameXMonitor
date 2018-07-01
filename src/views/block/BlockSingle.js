@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 import Table from '../../components/Table';
 
@@ -17,8 +18,11 @@ class BlockSingle extends Component {
               <td>{block.block_num}</td>
             </tr>
             <tr>
-              <th>Timestamp</th>
-              <td>{block.timestamp}</td>
+              <th>Time</th>
+              <td>
+                {block.timestamp &&
+                  dayjs(block.timestamp).format('YYYY/MM/DD hh:mm:ss')}
+              </td>
             </tr>
             <tr>
               <th>Number of transactions</th>
