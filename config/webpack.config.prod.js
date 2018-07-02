@@ -15,6 +15,7 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const Dotenv = require('dotenv-webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); 
 
 function copyPublicFolder() {
   fs.copySync(paths.appPublic, paths.appBuild, {
@@ -225,19 +226,13 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin(env.stringified),
     new Dotenv(),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        comparisons: false
-      },
-      mangle: {
-        safari10: true
-      },
-      output: {
-        comments: false,
-        ascii_only: true
-      },
-      sourceMap: shouldUseSourceMap
+    new UglifyJsPlugin({ 
+      uglifyOptions: { 
+        ecma: 8, 
+        compress: { 
+          inline: 1 
+        } 
+      } 
     }),
     // test compile to hash file
     // https://github.com/webpack-contrib/extract-text-webpack-plugin
