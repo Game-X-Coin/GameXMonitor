@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Input, Label, Form } from 'reactstrap';
+
+import { chainAPI, historyAPI } from '../../../../services/api';
 
 import './style.scss';
 
+@withRouter
 class SearchInput extends Component {
   constructor() {
     super();
     this.searchRef = React.createRef();
   }
 
-  handleSearch(e) {
+  async handleSearch(e) {
     e.preventDefault();
 
-    console.log(this.searchRef.current);
+    const { value } = this.searchRef.current;
+
+    if (!value.length) {
+      return;
+    }
+
+    if (Number(value)) {
+      this.props.history.push(`/blocks/${value}`);
+    } else if (value.length <= 12) {
+      this.props.history.push(`/accounts/${value}`);
+    } else if (value.length === 64) {
+      try {
+        await chainAPI.getBlock(value);
+        this.props.history.push(`/blocks/${value}`);
+      } catch (error) {
+        await historyAPI.getTransaction(value);
+        this.props.history.push(`/transactions/${value}`);
+      }
+    }
   }
 
   render() {
