@@ -226,14 +226,6 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin(env.stringified),
     new Dotenv(),
-    new UglifyJsPlugin({ 
-      uglifyOptions: { 
-        ecma: 8, 
-        compress: { 
-          inline: 1 
-        } 
-      } 
-    }),
     // test compile to hash file
     // https://github.com/webpack-contrib/extract-text-webpack-plugin
     new ExtractTextPlugin({
