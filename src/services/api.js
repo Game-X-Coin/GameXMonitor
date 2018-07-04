@@ -33,7 +33,7 @@ export const chainAPI = {
   getBalance(account) {
     return request({
       url: '/chain/get_currency_balance',
-      data: { code: 'eosio.token', account, symbol: 'EOS' }
+      data: { code: 'eosio.token', account, symbol: 'GXC' }
     });
   }
 };
