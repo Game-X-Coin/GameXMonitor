@@ -1,1 +1,1 @@
-export const GA_ID = 'UA-113888809-1';
+export const GA_ID = process.env.GA_ID;
