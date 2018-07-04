@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import dayjs from 'dayjs';
 
+import Time from '../../components/Pages/Time';
 import Table from '../../components/Table';
 
 class BlockSingle extends Component {
@@ -20,8 +20,7 @@ class BlockSingle extends Component {
             <tr>
               <th>Time</th>
               <td>
-                {block.timestamp &&
-                  dayjs(block.timestamp).format('YYYY/MM/DD hh:mm:ss')}
+                <Time format="YYYY/MM/DD hh:mm:ss">{block.timestamp}</Time>
               </td>
             </tr>
             <tr>

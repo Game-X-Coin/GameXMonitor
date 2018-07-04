@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
 
+import Time from '../../components/Pages/Time';
 import Table from '../../components/Table';
-
-dayjs.extend(relativeTime);
 
 class TxList extends Component {
   render() {
@@ -30,7 +27,9 @@ class TxList extends Component {
                 <td>
                   <Link to={`/transactions/${txn.id}`}>{txn.id}</Link>
                 </td>
-                <td>{tx.expiration && dayjs(tx.expiration).fromNow()}</td>
+                <td>
+                  <Time>{tx.expiration}</Time>
+                </td>
                 <td>{tx.actions.length}</td>
               </tr>
             );

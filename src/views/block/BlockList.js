@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
 
+import Time from '../../components/Pages/Time';
 import Table from '../../components/Table';
-
-dayjs.extend(relativeTime);
 
 class BlockList extends Component {
   render() {
@@ -28,7 +25,9 @@ class BlockList extends Component {
               <td>
                 <Link to={`/blocks/${block.block_num}`}>{block.block_num}</Link>
               </td>
-              <td>{block.timestamp && dayjs(block.timestamp).fromNow()}</td>
+              <td>
+                <Time>{block.timestamp}</Time>
+              </td>
               <td>
                 <Link to={`/accounts/${block.producer}`}>{block.producer}</Link>
               </td>

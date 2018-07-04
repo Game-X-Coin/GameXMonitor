@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import dayjs from 'dayjs';
 
+import Time from '../../components/Pages/Time';
 import Table from '../../components/Table';
 
 class AccountSingle extends Component {
@@ -28,7 +28,7 @@ class AccountSingle extends Component {
             <tr>
               <th>Created at</th>
               <td>
-                {account.created && dayjs(account.created).format('YYYY/MM/DD')}}
+                <Time format="YYYY/MM/DD">{account.created}</Time>
               </td>
             </tr>
           </React.Fragment>
