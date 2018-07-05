@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
+import { browserHistory as history } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 
@@ -21,7 +23,9 @@ configure({
 
 ReactDOM.render(
   <Provider {...stores}>
-    <App />
+    <BrowserRouter history={history}>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
