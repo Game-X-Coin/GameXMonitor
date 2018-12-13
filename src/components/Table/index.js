@@ -9,7 +9,7 @@ const Table = ({
   vertical = false
 }) => {
   return (
-    <BootstrapTable className={vertical ? 'vertical' : ''} striped>
+    <BootstrapTable className={vertical ? 'vertical' : ''}>
       <thead>{renderHeader()}</thead>
       <tbody>{renderBody()}</tbody>
     </BootstrapTable>

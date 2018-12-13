@@ -1,7 +1,8 @@
+@import '../variables/all';
+
 .table {
-  margin-bottom: 2rem;
-  border: solid 0.5px #dee2e6;
-  font-size: 0.9rem;
+  margin-bottom: 5rem;
+  font-size: 1rem;
 
   &.vertical {
     th {
@@ -15,14 +16,15 @@
 
   th,
   td {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 1.5rem;
     vertical-align: middle;
     text-align: center;
   }
 
   thead th {
-    font-weight: bold;
-    border-bottom: 1px solid #dee2e6;
+    background-color: $surface-background;
+    color: #fff;
+    font-weight: normal
   }
 
   tbody {
@@ -31,8 +33,12 @@
       border: 0;
     }
 
-    tr:nth-of-type(2n - 1) {
-      background-color: #fafafa;
+    tr {
+      background-color: #fff
+    }
+
+    tr:nth-of-type(2n) {
+      background-color: #f0f0f0;
     }
   }
 }
