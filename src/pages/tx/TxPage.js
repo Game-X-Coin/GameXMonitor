@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import { TxSingle } from '../../views/tx';
 import { ActionList } from '../../views/action';
-import { Header, EmptyState } from '../../components/Pages';
+import { Header, EmptyState, Page } from '../../components/Pages';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
 @inject('dataStore')
@@ -22,7 +22,7 @@ class TxPage extends Component {
     const actions = transaction.trx && transaction.trx.trx.actions;
 
     return (
-      <div>
+      <Page>
         {fetching && <LoadingSpinner global />}
 
         <Header>Transaction Detail</Header>
@@ -34,7 +34,7 @@ class TxPage extends Component {
         ) : (
           <EmptyState>There are no actions in this transaction</EmptyState>
         )}
-      </div>
+      </Page>
     );
   }
 }

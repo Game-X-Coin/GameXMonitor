@@ -3,8 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import { BlockSingle } from '../../views/block';
 import { TxList } from '../../views/tx';
-
-import { EmptyState, Header } from '../../components/Pages';
+import { EmptyState, Header, Page } from '../../components/Pages';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
 @inject('dataStore')
@@ -32,7 +31,7 @@ class BlockPage extends Component {
     const { fetching, fetched } = requests.getBlock;
 
     return (
-      <div>
+      <Page>
         {fetching && <LoadingSpinner global />}
 
         <Header>Block {block.block_num && `#${block.block_num}`}</Header>
@@ -44,7 +43,7 @@ class BlockPage extends Component {
         ) : (
           <EmptyState>There are no transactions in this block</EmptyState>
         )}
-      </div>
+      </Page>
     );
   }
 }

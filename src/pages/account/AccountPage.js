@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import { AccountSingle } from '../../views/account';
 import { ActionList } from '../../views/action';
-import { Header, EmptyState } from '../../components/Pages';
+import { Header, EmptyState, Page } from '../../components/Pages';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
 @inject('dataStore')
@@ -34,7 +34,7 @@ class AccountPage extends Component {
       : [];
 
     return (
-      <div>
+      <Page>
         {requests.getAccount.fetching && <LoadingSpinner global />}
 
         <Header>Account</Header>
@@ -46,7 +46,7 @@ class AccountPage extends Component {
         ) : (
           <EmptyState>There are no actions in this account</EmptyState>
         )}
-      </div>
+      </Page>
     );
   }
 }

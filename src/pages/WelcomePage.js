@@ -4,28 +4,25 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
 import { BlockList } from '../views/block';
-import { Header } from '../components/Pages';
+import {  JumboTron } from '../components/Layout'
+import { Page, Header } from '../components/Pages';
 
 import { chainAPI } from '../services/api';
+
+import './WelcomePage.scss'
 
 @inject('dataStore')
 @observer
 class WelcomePage extends Component {
-  interval = null;
-
   @observable lastestBlock;
   @observable blocks = [];
 
   componentDidMount() {
-    this.request();
 
-    this.interval = setInterval(() => {
+    setTimeout(() => {
       this.request();
-    }, 3000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
+      
+    }, 5000);
   }
 
   @action
@@ -53,14 +50,74 @@ class WelcomePage extends Component {
 
   render() {
     return (
-      <div>
-        <Header>
-          Lastest Blocks
-          <Link className="h6 font-weight-normal" to="/blocks">
-            View all blocks >
-          </Link>
-        </Header>
-        <BlockList blocks={this.blocks} />
+      <div class="welcome">
+        <JumboTron />
+
+        <Page>
+          <Header>
+            Stats
+          </Header>
+
+          <div className="stats">
+
+            <div className="stat">
+              <p className="label">
+                Block Height
+              </p>
+
+              <h1 className="value">
+                932121
+              </h1>
+            </div>
+
+            <div className="stat">
+              <p className="label">
+                Producer
+              </p>
+
+              <h1 className="value">
+                gxcgamexcoin
+              </h1>
+            </div>
+
+
+            <div className="stat">
+              <p className="label">
+                Total TXs
+              </p>
+
+              <h1 className="value">
+                213123
+              </h1>
+            </div>
+
+            <div className="stat">
+              <p className="label">
+                Total Accounts
+              </p>
+
+              <h1 className="value">
+                1233
+              </h1>
+            </div>
+
+          </div>
+
+
+          <Header>
+            Transactions
+            <Link className="h6 font-weight-normal" to="/blocks">
+              See More >
+            </Link>
+          </Header>
+          <BlockList blocks={this.blocks} />
+
+          <Header>
+            Block Producers
+          </Header>
+          <BlockList blocks={this.blocks} />
+
+        </Page>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import qs from 'query-string';
 
 import { BlockList } from '../../views/block';
 import Pagination from '../../components/Pagination';
-import { Header } from '../../components/Pages';
+import { Header, Page } from '../../components/Pages';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
 @inject('dataStore')
@@ -33,7 +33,7 @@ class BlockListPage extends Component {
     const pageNum = Number(page);
 
     return (
-      <div>
+      <Page>
         {requests.getBlocks.fetching && <LoadingSpinner global />}
 
         <Header>Blocks</Header>
@@ -45,7 +45,7 @@ class BlockListPage extends Component {
           prevLink={`/blocks?page=${pageNum - 1}`}
           nextLink={`/blocks?page=${pageNum + 1}`}
         />
-      </div>
+      </Page>
     );
   }
 }
