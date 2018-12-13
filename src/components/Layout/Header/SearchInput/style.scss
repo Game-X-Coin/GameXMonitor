@@ -1,29 +1,20 @@
 .search-input {
-  width: 27rem;
+  max-width: 35rem;
+  width: 100%;
 
   .field {
     display: block;
-    padding: 0.6rem 1rem;
+    padding: 1rem 1.5rem;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: #fff;
     border: 0;
-    border-radius: 0;
+    border-radius: 50px;
     font-size: 1rem;
     transition: all 0.3s;
 
     &,
     &::placeholder {
-      color: #fff;
-    }
-
-    &:focus {
-      background-color: rgba(255, 255, 255, 1);
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
-      &,
-      &::placeholder {
-        color: rgba(0, 0, 0, 0.5);
-      }
+      color: #c7c7c7;
     }
   }
 }

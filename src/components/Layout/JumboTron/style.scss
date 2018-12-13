@@ -1,28 +1,42 @@
-@import '../../../styles/variables/color';
+@import '../../../styles/variables/all';
 
 .jumbo-tron {
   position: relative;
-  background: $gradient;
-  overflow: hidden;
-
-  h1 {
-    padding: 8rem 0 8rem 0;
-    max-width: 30rem;
-    color: #fff;
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
-  }
+  background: url('https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2704&q=80');
+  background-size: cover;
+  background-position: 50% 50%;
 
   &:after {
     content: '';
     position: absolute;
     left: 0;
-    top: 100%;
-    display: block;
-    height: 10rem;
-    width: 100%;
-    background-color: #fff;
-    transform-origin: 0;
-    transform: skewY(-2.5deg);
-    box-shadow: 0 -5px 5px 0px #909090;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+    z-index: 10;
+
+    padding: 8rem 0;
+    color: #fff;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 3.3rem;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    font-weight: lighter;
   }
 }

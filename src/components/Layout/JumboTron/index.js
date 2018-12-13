@@ -1,11 +1,18 @@
 import React from 'react';
+
+import SearchInput from '../Header/SearchInput'
+
 import './style.scss';
 
 const JumboTron = props => {
   return (
     <div className="jumbo-tron">
       <div className="container">
-        <h1>{props.children}</h1>
+        <p>Track the history of</p>
+        <h1>GAME X COIN</h1>
+
+        <SearchInput />  
+
       </div>
     </div>
   );

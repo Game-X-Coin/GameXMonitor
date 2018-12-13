@@ -49,7 +49,7 @@ class SearchInput extends Component {
             id="search"
             className="field"
             type="search"
-            placeholder="Find a GXC transaction, account, block"
+            placeholder="Block, Transaction, Account"
             autoComplete="search"
           />
         </Form>

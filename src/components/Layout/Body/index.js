@@ -4,7 +4,7 @@ import './style.scss';
 const Body = props => {
   return (
     <div className="body flex-fill">
-      <div className="container">{props.children}</div>
+      {props.children}
     </div>
   );
 };
