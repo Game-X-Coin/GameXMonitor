@@ -1,30 +1,36 @@
-@import '../variables/all';
-
 .table {
+  table-layout: fixed;
+
   margin-bottom: 5rem;
   font-size: 1rem;
 
   &.vertical {
     th {
+      width: 17rem;
       text-align: left;
+      font-weight: 500;
     }
 
     td {
-      text-align: right;
+      text-align: left;
     }
   }
 
   th,
   td {
-    padding: 1.5rem 1.5rem;
+    padding: 1.5rem;
     vertical-align: middle;
     text-align: center;
+    font-weight: normal;
+  }
+
+  td {
+    word-break: break-all;
   }
 
   thead th {
     background-color: $surface-background;
     color: #fff;
-    font-weight: normal
   }
 
   tbody {
@@ -34,7 +40,7 @@
     }
 
     tr {
-      background-color: #fff
+      background-color: #fff;
     }
 
     tr:nth-of-type(2n) {
