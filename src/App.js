@@ -1,43 +1,65 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { withRouter } from 'react-router-dom';
+import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
+import classNames from 'classnames';
+
+import trackGA from './utils/HOC/trackGA';
+import { preload } from './utils/preload';
+
+import { images } from './constants';
 
 import Routes from './Routes';
 import { Header, Body, Footer } from './components/Layout';
-import trackGA from './utils/HOC/trackGA';
 
 @withRouter
 @trackGA
 @inject('dataStore')
 @observer
 class App extends Component {
+  @observable
+  initialized = false;
+
   componentDidMount() {
-    const { getChainInfo } = this.props.dataStore;
-
-    getChainInfo();
-
-    setInterval(() => {
-      getChainInfo();
-    }, 3000);
+    this.initialize();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.location !== this.props.location) {
-      window.scrollTo(0, 0);
-    }
+  async initialize() {
+    await this.props.dataStore.getChainMeta();
+
+    preload(
+      [
+        images.jumboTron,
+        images.logo_header,
+        images.logo_footer,
+        ...images.nodes
+      ],
+      () => {
+        this.initialized = true;
+
+        this.request();
+      }
+    );
+  }
+
+  request() {
+    setTimeout(async () => {
+      await this.props.dataStore.getChainMeta();
+
+      this.request();
+    }, 3000);
   }
 
   render() {
     return (
-      <div id="app">
+      <div id="app" className={classNames(!this.initialized && 'initializing')}>
+        <div className={classNames('splash', this.initialized && 'hide')} />
         <Header />
         <Body>
           <Routes />
         </Body>
         <Footer />
-        {process.env.NODE_ENV !== 'production' && <DevTools />}
       </div>
     );
   }
