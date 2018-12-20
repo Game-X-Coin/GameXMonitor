@@ -1,36 +1,29 @@
 @font-face {
-  font-family: 'PT_Sans-Caption';
-  font-weight: 700;
-  src: local('PT_Sans-Caption Bold'),
-    url('../media/font/PTSans-Caption/PT_Sans-Caption-Web-Bold.ttf')
-      format('truetype');
-}
-
-@font-face {
-  font-family: 'HelveticaNeue';
+  font-family: 'Poppins';
   font-weight: 400;
-  src: local('HelveticaNeue'),
-    url('../media/font/HelveticaNeue/HelveticaNeue.ttf') format('truetype');
+  src: local('Poppins Regular'),
+    url('../media/font/Poppins-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'HelveticaNeue';
-  font-weight: 700;
-  src: local('HelveticaNeue Bold'),
-    url('../media/font/HelveticaNeue/HelveticaNeue-Bold.ttf') format('truetype');
+  font-family: 'Poppins';
+  font-weight: 500;
+  src: local('Poppins Medium'),
+    url('../media/font/Poppins-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Saira';
+  font-weight: 900;
+  src: local('Saira Black'),
+    url('../media/font/Saira-Black.ttf') format('truetype');
 }
 
 body {
-  font-family: 'HelveticaNeue', sans-serif !important;
-  color: #545454;
+  font-family: 'Poppins', sans-serif !important;
+  color: #1d1d1d;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'PT_Sans-Caption' !important;
-  font-weight: bold;
+.bold {
+  font-family: 'Saira' !important;
 }
