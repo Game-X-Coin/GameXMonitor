@@ -1,11 +1,7 @@
 import React from 'react';
 
 const Header = props => {
-  return (
-    <h5 className="d-flex justify-content-between align-items-end px-0 pb-2">
-      {props.children}
-    </h5>
-  );
+  return <h4 className="px-0 pb-3">{props.children}</h4>;
 };
 
 export default Header;
