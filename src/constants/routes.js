@@ -16,6 +16,11 @@ export const routes = [
     component: asyncComponent(() => import('../pages/block/BlockPage'))
   },
   {
+    path: '/transactions',
+    exact: true,
+    component: asyncComponent(() => import('../pages/tx/TxListPage'))
+  },
+  {
     path: '/transactions/:id',
     component: asyncComponent(() => import('../pages/tx/TxPage'))
   },
