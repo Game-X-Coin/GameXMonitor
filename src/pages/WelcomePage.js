@@ -1,122 +1,125 @@
 import React, { Component } from 'react';
-import { observable, action, runInAction } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
-import { BlockList } from '../views/block';
-import {  JumboTron } from '../components/Layout'
+import { JumboTron } from '../components/Layout';
 import { Page, Header } from '../components/Pages';
 
-import { chainAPI } from '../services/api';
-
-import './WelcomePage.scss'
+import './WelcomePage.scss';
+import Table from '../components/Table';
+import { producers } from '../constants/producers';
 
 @inject('dataStore')
 @observer
 class WelcomePage extends Component {
-  @observable lastestBlock;
-  @observable blocks = [];
-
-  componentDidMount() {
-
-    setTimeout(() => {
-      this.request();
-      
-    }, 5000);
-  }
-
-  @action
-  async request() {
+  render() {
     const {
-      chain: { head_block_num }
+      chainStats: { block_height, producer, total_txs, total_accounts },
+      recentActions = []
     } = this.props.dataStore;
 
-    let end = head_block_num;
-    let start = head_block_num - 20;
+    const stats = [
+      { label: 'Block Height', value: block_height },
+      { label: 'Producer', value: producer },
+      { label: 'Total TXs', value: total_txs },
+      { label: 'Total Accounts', value: total_accounts }
+    ];
 
-    if (this.lastestBlock && this.lastestBlock !== head_block_num) {
-      start = this.lastestBlock + 1;
-    }
-
-    for (let i = start; i <= end; i++) {
-      const block = await chainAPI.getBlock(i);
-
-      runInAction(() => {
-        this.blocks = [block, ...this.blocks].slice(0, 20);
-        this.lastestBlock = i;
-      });
-    }
-  }
-
-  render() {
     return (
-      <div class="welcome">
+      <div className="welcome">
         <JumboTron />
 
         <Page>
-          <Header>
-            Stats
-          </Header>
+          <Header>Stats</Header>
+          <div className="row stats">
+            {stats.map(({ label, value }) => (
+              <div className="col-lg-3 col-md-6" key={label}>
+                <div className="stat">
+                  <p className="label">{label}</p>
 
-          <div className="stats">
-
-            <div className="stat">
-              <p className="label">
-                Block Height
-              </p>
-
-              <h1 className="value">
-                932121
-              </h1>
-            </div>
-
-            <div className="stat">
-              <p className="label">
-                Producer
-              </p>
-
-              <h1 className="value">
-                gxcgamexcoin
-              </h1>
-            </div>
-
-
-            <div className="stat">
-              <p className="label">
-                Total TXs
-              </p>
-
-              <h1 className="value">
-                213123
-              </h1>
-            </div>
-
-            <div className="stat">
-              <p className="label">
-                Total Accounts
-              </p>
-
-              <h1 className="value">
-                1233
-              </h1>
-            </div>
-
+                  <h1 className="value">{value}</h1>
+                </div>
+              </div>
+            ))}
           </div>
 
+          <Header>Live Transactions</Header>
+          <Table
+            renderHeader={() => (
+              <tr>
+                <th>Block Height</th>
+                <th>Contract</th>
+                <th>Action</th>
+                <th width="200">Authorization</th>
+                <th width="400">Data</th>
+              </tr>
+            )}
+            renderBody={() =>
+              recentActions.map(
+                ({
+                  _id,
+                  block_num,
+                  act: { account, name, authorization = [], data } = {}
+                }) => (
+                  <tr key={_id}>
+                    <td>
+                      <Link to={`/blocks/${block_num}`}>{block_num}</Link>
+                    </td>
+                    <td>
+                      <Link to={`/accounts/${account}`}>{account}</Link>
+                    </td>
+                    <td>{name}</td>
+                    <td>
+                      {authorization.map(({ permission, actor }) => (
+                        <Link key={actor} to={`/accounts/${actor}`}>
+                          {actor}@{permission}
+                        </Link>
+                      ))}
+                    </td>
+                    <td className="small">{JSON.stringify(data)}</td>
+                  </tr>
+                )
+              )
+            }
+          />
 
-          <Header>
-            Transactions
-            <Link className="h6 font-weight-normal" to="/blocks">
-              See More >
-            </Link>
-          </Header>
-          <BlockList blocks={this.blocks} />
+          <Header>Block Producers</Header>
+          <div className="row">
+            {producers.map(({ account, nickname, img_logo, img_branding }) => {
+              const isProducing = producer === account;
 
-          <Header>
-            Block Producers
-          </Header>
-          <BlockList blocks={this.blocks} />
+              return (
+                <div className="col-lg-6 col-md-6" key={account}>
+                  <Link className="producer" to={`/accounts/${account}`}>
+                    <div
+                      className="branding"
+                      style={{
+                        backgroundImage: `url(${img_branding})`
+                      }}
+                    >
+                      <img className="logo" src={img_logo} alt={nickname} />
+                    </div>
+                    <div className="content">
+                      <div>
+                        <h5 className="nickname">{nickname}</h5>
+                        <p className="account text-muted">{account}</p>
+                      </div>
 
+                      <div
+                        className={classNames(
+                          'status',
+                          isProducing && 'active'
+                        )}
+                      >
+                        {isProducing ? 'Producing' : 'Idle'}
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </Page>
       </div>
     );
