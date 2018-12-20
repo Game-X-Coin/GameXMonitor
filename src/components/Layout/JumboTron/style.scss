@@ -2,7 +2,6 @@
 
 .jumbo-tron {
   position: relative;
-  background: url('https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2704&q=80');
   background-size: cover;
   background-position: 50% 50%;
 
@@ -38,5 +37,24 @@
     margin-bottom: 0;
     font-size: 1.2rem;
     font-weight: lighter;
+  }
+
+  .search-input {
+    max-width: 35rem;
+    width: 100%;
+
+    .form-control {
+      display: block;
+      padding: 1.3rem 1.75rem;
+      width: 100%;
+      background-color: #fff;
+      border: 0;
+      border-radius: 50px;
+      font-size: 1rem;
+
+      &::placeholder {
+        color: #c7c7c7;
+      }
+    }
   }
 }

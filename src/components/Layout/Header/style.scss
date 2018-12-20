@@ -1,26 +1,118 @@
 @import '../../../styles/variables/all';
 
+.header-wrapper {
+  height: 5rem;
+}
+
 .header {
   display: flex;
   align-items: center;
 
+  position: fixed;
+  top: 0;
+  z-index: $zindex-header;
+
   padding: 0.75rem 0;
   width: 100%;
-  height: 5rem;
   background: $header-background;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 
   .container {
     background-color: transparent !important;
 
-    .logo {
-      height: 2rem;
-      width: auto;
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        height: 2rem;
+        margin-right: 0.5rem;
+      }
+
+      .bold {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+        color: #fff;
+      }
     }
 
     .navbar-nav {
       flex-direction: row;
       align-items: center;
+
+      position: relative;
+    }
+
+    .divider {
+      margin-left: 2rem;
+      margin-right: 0.5rem;
+      height: 1rem;
+      width: 1px;
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+
+    .search-button {
+      display: flex;
+      align-items: center;
+
+      padding: 0.5rem 1rem;
+      color: #fff;
+      user-select: none;
+      cursor: pointer;
+
+      .search-icon {
+        fill: #fff;
+
+        margin-right: 0.2rem;
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    .search-bar {
+      position: absolute;
+      right: 0;
+
+      display: flex;
+      align-items: center;
+      background: $surface-background;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 3px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s $ease-in-out-cubic;
+
+      &.active {
+        opacity: 1;
+        width: 30rem;
+        pointer-events: initial;
+      }
+
+      .form-control {
+        padding-right: 0;
+        background: transparent;
+        border: none;
+        color: #fff;
+        caret-color: #fff;
+        box-shadow: none;
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.75);
+        }
+      }
+
+      .close-icon {
+        padding: 0.7rem 1rem;
+        cursor: pointer;
+
+        svg {
+          fill: rgba(255, 255, 255, 0.75);
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
     }
   }
 }
