@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
-import { inject, observer } from 'mobx-react';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
 import qs from 'query-string';
 
-import { BlockList } from '../../views/block';
 import Pagination from '../../components/Pagination';
-import { Header, Page } from '../../components/Pages';
+import Table from '../../components/Table';
+import { Header, Page, Time } from '../../components/Pages';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
-@inject('dataStore')
+import API from '../../services/API';
+
 @observer
 class BlockListPage extends Component {
+  @observable
+  fetching = false;
+
+  @observable
+  blocks = [];
+
+  @observable
+  pagination = {};
+
   componentDidMount() {
     this.request();
   }
@@ -20,30 +32,68 @@ class BlockListPage extends Component {
     }
   }
 
-  request() {
-    const { getBlocks } = this.props.dataStore;
-    const { page } = qs.parse(this.props.location.search);
+  async request() {
+    const { page = 1 } = qs.parse(this.props.location.search);
 
-    getBlocks(page);
+    this.fetching = true;
+
+    const { result: blocks, pagination } = await API.getBlocks(page);
+
+    this.blocks = blocks;
+    this.pagination = pagination;
+
+    this.fetching = false;
   }
 
   render() {
-    const { blocks, requests } = this.props.dataStore;
-    const { page = 1 } = qs.parse(this.props.location.search);
-    const pageNum = Number(page);
+    const { page = 0, count = 0 } = this.pagination;
+    const { history } = this.props;
 
     return (
       <Page>
-        {requests.getBlocks.fetching && <LoadingSpinner global />}
+        {this.fetching && <LoadingSpinner global />}
 
         <Header>Blocks</Header>
-        <BlockList blocks={blocks} />
+        <Table
+          renderHeader={() => (
+            <tr>
+              <th>Height</th>
+              <th>Status</th>
+              <th>Producer</th>
+              <th>Total TXs</th>
+              <th width="200">Date</th>
+            </tr>
+          )}
+          renderBody={() =>
+            this.blocks.map(
+              ({
+                block_id,
+                block_num,
+                irreversible,
+                block: { producer, transactions = [], timestamp } = {}
+              }) => (
+                <tr key={block_id}>
+                  <td>
+                    <Link to={`/blocks/${block_num}`}>{block_num}</Link>
+                  </td>
+                  <td>{irreversible ? 'Irreversible' : 'Pending'}</td>
+                  <td>
+                    <Link to={`/accounts/${producer}`}>{producer}</Link>
+                  </td>
+                  <td>{transactions.length}</td>
+                  <td>
+                    <Time>{timestamp}</Time>
+                  </td>
+                </tr>
+              )
+            )
+          }
+        />
 
         <Pagination
-          current={pageNum}
-          total={1000}
-          prevLink={`/blocks?page=${pageNum - 1}`}
-          nextLink={`/blocks?page=${pageNum + 1}`}
+          current={page}
+          total={count}
+          onChange={v => history.push(`/blocks?page=${v}`)}
         />
       </Page>
     );
