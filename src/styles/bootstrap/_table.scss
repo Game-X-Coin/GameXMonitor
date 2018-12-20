@@ -1,28 +1,36 @@
 .table {
-  margin-bottom: 2rem;
-  border: solid 0.5px #dee2e6;
-  font-size: 0.9rem;
+  table-layout: fixed;
+
+  margin-bottom: 5rem;
+  font-size: 1rem;
 
   &.vertical {
     th {
+      width: 17rem;
       text-align: left;
+      font-weight: 500;
     }
 
     td {
-      text-align: right;
+      text-align: left;
     }
   }
 
   th,
   td {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
     vertical-align: middle;
     text-align: center;
+    font-weight: normal;
+  }
+
+  td {
+    word-break: break-all;
   }
 
   thead th {
-    font-weight: bold;
-    border-bottom: 1px solid #dee2e6;
+    background-color: $surface-background;
+    color: #fff;
   }
 
   tbody {
@@ -31,8 +39,12 @@
       border: 0;
     }
 
-    tr:nth-of-type(2n - 1) {
-      background-color: #fafafa;
+    tr {
+      background-color: #fff;
+    }
+
+    tr:nth-of-type(2n) {
+      background-color: #f0f0f0;
     }
   }
 }

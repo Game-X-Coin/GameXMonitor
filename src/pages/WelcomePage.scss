@@ -1,0 +1,89 @@
+@import '../styles/variables/all';
+
+.welcome {
+  .stats {
+    margin-bottom: 2.5rem;
+  }
+
+  .stat {
+    margin-bottom: 2.5rem;
+    padding: 2.5rem 0;
+    background-color: $surface-background;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    .label {
+      margin-bottom: 0.5rem;
+    }
+
+    .value {
+      margin-bottom: 0;
+      font-weight: bold;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+  }
+
+  .producer {
+    display: block;
+    margin-bottom: 2rem;
+    background: #fff;
+    color: initial;
+    text-decoration: none;
+
+    .branding {
+      position: relative;
+      background-size: cover;
+      background-position: 50% 50%;
+      height: 15rem;
+
+      .logo {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 80px;
+        height: 80px;
+        border-radius: 3px;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      }
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 1rem 1.5rem;
+      border: 1px solid #c7c7c7;
+      border-top: none;
+
+      .nickname {
+        margin-bottom: 0;
+        font-size: 1.2rem;
+      }
+
+      .account {
+        margin-bottom: 0;
+        font-size: 1rem;
+      }
+
+      .status {
+        padding: 0.3rem 0;
+        width: 8rem;
+        border: 1px solid $surface-background;
+        border-radius: 3px;
+        text-align: center;
+
+        &.active {
+          background: $surface-background;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

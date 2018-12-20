@@ -1,7 +1,8 @@
+@import '../../../styles/variables/all';
+
 .footer {
-  padding: 2rem 0;
-  margin-top: 5rem;
-  background-color: #404040;
+  padding: 6rem 0;
+  background-color: $surface-background;
   color: #fff;
   text-align: right;
 
@@ -12,6 +13,6 @@
   }
 
   .logo {
-    height: 3.5rem;
+    height: 4.5rem;
   }
 }

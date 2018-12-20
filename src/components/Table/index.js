@@ -6,10 +6,11 @@ import './style.scss';
 const Table = ({
   renderHeader = () => null,
   renderBody = () => null,
-  vertical = false
+  vertical = false,
+  style
 }) => {
   return (
-    <BootstrapTable className={vertical ? 'vertical' : ''} striped>
+    <BootstrapTable className={vertical ? 'vertical' : ''} style={style}>
       <thead>{renderHeader()}</thead>
       <tbody>{renderBody()}</tbody>
     </BootstrapTable>

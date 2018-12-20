@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended", "react-app", "prettier"],
+  "extends": ["eslint:recommended", "react-app"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -20,6 +20,5 @@
     "strict": ["error", "global"],
     "curly": "warn",
     "no-debugger": 0
-    // "prettier/prettier": "error"
   }
 }

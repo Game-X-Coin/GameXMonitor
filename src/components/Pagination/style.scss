@@ -4,42 +4,30 @@
   display: flex;
   justify-content: center;
 
-  a {
-    position: relative;
-    padding: 0.7rem 1.5rem;
-    margin: 0 1rem;
-    width: 10rem;
+  button {
+    margin: 0 0.5rem;
+    padding: 0.6rem 1.5rem;
+    background: transparent;
+    border: none;
+    outline: none !important;
     text-align: center;
-    border-style: solid;
-    border-image: $gradient;
-    border-image-slice: 1;
-    border-image-width: 5px;
+    color: $surface-background;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
 
     &.disabled {
       pointer-events: none;
-      opacity: 0.3;
+      opacity: 0.5;
     }
 
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      z-index: -1;
-      background: $gradient;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-
-    &:hover {
+    &.active {
+      background-color: $surface-background;
+      border-radius: 3px;
       color: #fff;
-      text-decoration: none;
-
-      &:after {
-        opacity: 1;
-      }
+      pointer-events: none;
     }
   }
 }

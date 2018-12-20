@@ -1,9 +1,11 @@
 import React from 'react';
 
+import './EmptyState.scss';
+
 const EmptyState = props => {
   return (
-    <div className="py-5 text-center">
-      <h5>{props.children}</h5>
+    <div className="empty-state">
+      <p>{props.children}</p>
     </div>
   );
 };

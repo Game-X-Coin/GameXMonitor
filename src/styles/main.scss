@@ -2,9 +2,38 @@
 @import 'base/all';
 @import 'bootstrap/all'; // customize bootstrap
 
+html,
+body,
+#root,
+#app {
+  min-height: 100vh;
+  background: $primary;
+}
+
 #app {
   display: flex;
   flex-direction: column;
 
-  min-height: 100vh;
+  position: relative;
+
+  &.initializing {
+    overflow: hidden;
+  }
+
+  .splash {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: $zindex-splash;
+
+    background: $primary;
+    will-change: height;
+    transition: height 1.5s $ease-in-out-cubic;
+
+    &.hide {
+      height: 0%;
+    }
+  }
 }

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+
+import './Time.scss';
 
 dayjs.extend(relativeTime);
 
@@ -10,16 +12,22 @@ const getCorrectTime = date => {
   return dateInstance.getTime() - dateInstance.getTimezoneOffset() * 60 * 1000;
 };
 
-const Time = props => {
-  if (!props.children) {
-    return null;
+class Time extends Component {
+  render() {
+    const { format, children } = this.props;
+
+    const time = getCorrectTime(children);
+
+    if (!children) {
+      return null;
+    }
+
+    return (
+      <span className="time" title={dayjs(time).format('YYYY-MM-DD hh:mm:ss')}>
+        {format ? dayjs(time).format(format) : dayjs(time).fromNow()}
+      </span>
+    );
   }
-
-  const time = getCorrectTime(props.children);
-
-  return props.format
-    ? dayjs(time).format(props.format)
-    : dayjs(time).fromNow();
-};
+}
 
 export default Time;

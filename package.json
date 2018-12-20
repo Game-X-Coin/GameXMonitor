@@ -53,7 +53,7 @@
   "devDependencies": {
     "autoprefixer": "8.2.0",
     "babel-core": "6.26.0",
-    "babel-eslint": "8.2.2",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "23.0.0-alpha.0",
     "babel-loader": "7.1.4",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
@@ -132,7 +132,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-ga": "^2.5.3",
-    "react-headroom": "^2.2.2",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "reactstrap": "^6.0.1",
