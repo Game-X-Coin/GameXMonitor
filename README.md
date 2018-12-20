@@ -1,36 +1,15 @@
-# GXC Block Explorer
+# GameXMonitor
 
-> GXC Block Explorer
+> Track the history of GameXCoin
+
+![example](./public/share.png)
 
 ## Development
 
-### Start
-
 ```bash
-$ yarn
-$ yarn start # localhost:3000
-```
+$ yarn # install dependencies
 
-### Requirement
+$ yarn start # run app in 127.0.0.1:3000
 
-```bash
-$ sudo apt-get install libglib2.0-dev
-```
-
-### Apply prettier
-
-change `.vscode/settings.json`
-
-```json
-{
-  "editor.formatOnSave": true,
-  "javascript.format.enable": false,
-  "prettier.eslintIntegration": true
-}
-```
-
-### fix image-webpack warning
-
-```bash
-$ sudo apt-get install libpng16-dev
+$ yarn build # build app
 ```
