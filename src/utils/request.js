@@ -5,8 +5,7 @@ const { API_ENDPOINT } = process.env;
 const defaultHeaders = {};
 
 const defaultOptions = {
-  baseURL: API_ENDPOINT,
-  method: 'post'
+  baseURL: API_ENDPOINT
 };
 
 const request = options => {
