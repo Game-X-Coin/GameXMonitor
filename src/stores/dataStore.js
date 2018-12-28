@@ -9,16 +9,16 @@ class dataStore {
 
   getChainMeta = async () => {
     const [
-      { result: chainInfo },
+      /*  { result: chainInfo }, */
       { result: chainStats },
       { result: recentActions }
     ] = await Promise.all([
-      API.getChainInfo(),
+      /*  API.getChainInfo(), */
       API.getChainStats(),
       API.getActions(1, 7)
     ]);
 
-    this.chainInfo = chainInfo;
+    /*  this.chainInfo = chainInfo; */
     this.chainStats = chainStats;
     this.recentActions = recentActions;
   };
