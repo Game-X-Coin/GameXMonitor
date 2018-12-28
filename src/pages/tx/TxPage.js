@@ -55,7 +55,7 @@ class TxPage extends Component {
           renderBody={() => (
             <React.Fragment>
               <tr>
-                <th>Hash</th>
+                <th>ID</th>
                 <td>{id}</td>
               </tr>
               <tr>
@@ -87,7 +87,7 @@ class TxPage extends Component {
         />
 
         <Header>
-          Actions {action_traces.length && `(${action_traces.length})`}
+          Actions {action_traces.length ? `(${action_traces.length})` : ''}
         </Header>
         {this.fetched &&
           (action_traces.length ? (

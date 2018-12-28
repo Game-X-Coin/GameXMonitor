@@ -62,11 +62,11 @@ class BlockPage extends Component {
                 <td>{block_num}</td>
               </tr>
               <tr>
-                <th>Hash</th>
+                <th>ID</th>
                 <td>{block_id}</td>
               </tr>
               <tr>
-                <th>Previous Hash</th>
+                <th>Previous</th>
                 <td>
                   <Link to={`/blocks/${previous}`}>{previous}</Link>
                 </td>
@@ -98,7 +98,7 @@ class BlockPage extends Component {
         />
 
         <Header>
-          Transactions {transactions.length && `(${transactions.length})`}
+          Transactions {transactions.length ? `(${transactions.length})` : ''}
         </Header>
 
         {this.fetched &&
@@ -106,7 +106,7 @@ class BlockPage extends Component {
             <Table
               renderHeader={() => (
                 <tr>
-                  <th>Hash</th>
+                  <th>ID</th>
                   <th>Status</th>
                   <th>Total Actions</th>
                   <th>Expiration</th>

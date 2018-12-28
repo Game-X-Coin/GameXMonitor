@@ -57,7 +57,7 @@ class TxListPage extends Component {
         <Table
           renderHeader={() => (
             <tr>
-              <th width="400">Hash</th>
+              <th width="400">ID</th>
               <th>Block Height</th>
               <th>Status</th>
               <th>Total Actions</th>
