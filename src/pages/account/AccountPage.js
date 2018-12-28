@@ -78,7 +78,7 @@ class AccountPage extends Component {
       permissions = [],
       created
     } = this.account;
-    const { page, count } = this.pagination;
+    const { count } = this.pagination;
 
     return (
       <Page>
@@ -200,8 +200,7 @@ class AccountPage extends Component {
                 }
               />
               <Pagination
-                current={page}
-                total={count}
+                {...this.pagination}
                 onChange={v => this.fetchActions(v)}
               />
             </React.Fragment>

@@ -46,7 +46,6 @@ class BlockListPage extends Component {
   }
 
   render() {
-    const { page = 0, count = 0 } = this.pagination;
     const { history } = this.props;
 
     return (
@@ -91,8 +90,7 @@ class BlockListPage extends Component {
         />
 
         <Pagination
-          current={page}
-          total={count}
+          {...this.pagination}
           onChange={v => history.push(`/blocks?page=${v}`)}
         />
       </Page>

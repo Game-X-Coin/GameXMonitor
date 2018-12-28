@@ -3,38 +3,47 @@ import classNames from 'classnames';
 
 import './style.scss';
 
-const PAGINATE_ROW = 5;
+const DEFAULT_PAGE_COUNT = 5;
 
-const Pagination = ({ current = 0, total = 0, onChange = () => null }) => {
-  const isMin = current === 1;
-  const isMax = current === total;
+const Pagination = ({
+  page = 0,
+  perPage = 0,
+  count = 0,
+  onChange = () => null
+}) => {
+  const pageCount = Math.ceil(count / perPage);
+  const paginationCount =
+    pageCount < DEFAULT_PAGE_COUNT ? pageCount : DEFAULT_PAGE_COUNT;
+
+  const isMin = page === 1;
+  const isMax = page === pageCount;
 
   return (
     <div className="r-pagination">
       <button
         className={classNames(isMin && 'disabled')}
-        onClick={() => onChange(current - 1)}
+        onClick={() => onChange(page - 1)}
       >
         Prev
       </button>
-      {Array.from({ length: PAGINATE_ROW }, (v, i) => {
-        const page =
-          i + 1 + (Math.ceil(current / PAGINATE_ROW) - 1) * PAGINATE_ROW;
-        const active = page === current;
+      {Array.from({ length: paginationCount }, (v, i) => {
+        const paginationNum =
+          i + 1 + (Math.ceil(page / paginationCount) - 1) * paginationCount;
+        const active = paginationNum === page;
 
         return (
           <button
-            key={page}
+            key={paginationNum}
             className={classNames(active && 'active')}
-            onClick={() => onChange(page)}
+            onClick={() => onChange(paginationNum)}
           >
-            {page}
+            {paginationNum}
           </button>
         );
       })}
       <button
         className={classNames(isMax && 'disabled')}
-        onClick={() => onChange(current + 1)}
+        onClick={() => onChange(page + 1)}
       >
         Next
       </button>
