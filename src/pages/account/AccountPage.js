@@ -179,7 +179,7 @@ class AccountPage extends Component {
                     ({
                       _id,
                       trx_id,
-                      createdAt,
+                      block_time,
                       act: { account, name, data } = {}
                     }) => (
                       <tr key={_id}>
@@ -191,7 +191,7 @@ class AccountPage extends Component {
                         </td>
                         <td>{name}</td>
                         <td>
-                          <Time>{createdAt}</Time>
+                          <Time>{block_time}</Time>
                         </td>
                         <td className="small">{JSON.stringify(data)}</td>
                       </tr>
