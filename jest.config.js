@@ -77,13 +77,13 @@ module.exports = {
   // testRegex: // [string]
   // testResultsProcessor: // [string]
   // testRunner: // [string]
-  // testURL: // [string]
+  testURL: 'http://localhost/',
   // timers: // [string]
 
   transform: {
     '\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
     '^(?!.*\\.(js|jsx|json|css|less|styl|scss|sass|sss)$)':
-      '<rootDir>/src/config/jest/fileTransform.js'
+      '<rootDir>/config/jest/fileTransform.js'
   },
 
   // transformIgnorePatterns: // [array<string>]
