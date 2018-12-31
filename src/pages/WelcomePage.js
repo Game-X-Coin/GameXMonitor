@@ -5,6 +5,7 @@ import classNames from 'classnames';
 
 import { JumboTron } from '../components/Layout';
 import { Page, Header } from '../components/Pages';
+import JsonView from '../components/JsonView';
 
 import './WelcomePage.scss';
 import Table from '../components/Table';
@@ -77,7 +78,11 @@ class WelcomePage extends Component {
                         </Link>
                       ))}
                     </td>
-                    <td className="small">{JSON.stringify(data)}</td>
+                    <td className="json-data">
+                      <JsonView
+                        src={data.constructor === Object ? data : { data }}
+                      />
+                    </td>
                   </tr>
                 )
               )

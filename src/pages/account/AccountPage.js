@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Header, EmptyState, Page, Time } from '../../components/Pages';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Table from '../../components/Table';
+import JsonView from '../../components/JsonView';
 
 import API from '../../services/API';
 import Pagination from '../../components/Pagination';
@@ -167,11 +168,11 @@ class AccountPage extends Component {
               <Table
                 renderHeader={() => (
                   <tr>
-                    <th width="100">TX</th>
+                    <th width="200">TX</th>
                     <th>Contract</th>
                     <th>Action</th>
                     <th>Date</th>
-                    <th width="500">Data</th>
+                    <th width="400">Data</th>
                   </tr>
                 )}
                 renderBody={() =>
@@ -193,7 +194,11 @@ class AccountPage extends Component {
                         <td>
                           <Time>{block_time}</Time>
                         </td>
-                        <td className="small">{JSON.stringify(data)}</td>
+                        <td className="json-data">
+                          <JsonView
+                            src={data.constructor === Object ? data : { data }}
+                          />
+                        </td>
                       </tr>
                     )
                   )

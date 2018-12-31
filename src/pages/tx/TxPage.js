@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Header, EmptyState, Page, Time } from '../../components/Pages';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Table from '../../components/Table';
+import JsonView from '../../components/JsonView';
 
 import API from '../../services/API';
 
@@ -97,7 +98,7 @@ class TxPage extends Component {
                   <th>Contract</th>
                   <th>Action</th>
                   <th>Authorization</th>
-                  <th width="500">Data</th>
+                  <th width="400">Data</th>
                 </tr>
               )}
               renderBody={() =>
@@ -115,7 +116,11 @@ class TxPage extends Component {
                           </Link>
                         ))}
                       </td>
-                      <td className="small">{JSON.stringify(data)}</td>
+                      <td className="json-data">
+                        <JsonView
+                          src={data.constructor === Object ? data : { data }}
+                        />
+                      </td>
                     </tr>
                   )
                 )
