@@ -2,27 +2,27 @@ import { images } from './images';
 
 export const producers = [
   {
-    account: 'node.kai',
-    nickname: 'Node Kai',
-    img_logo: images.nodes.kai,
-    img_branding: images.nodes.default_branding
+    account: 'galalab',
+    nickname: 'Gala Lab',
+    img_logo: images.nodes.galalab,
+    img_branding: images.nodes.bg_galalab
   },
   {
-    account: 'node.jin',
-    nickname: 'Node Jin',
-    img_logo: images.nodes.jin,
-    img_branding: images.nodes.default_branding
+    account: 'isensfnb',
+    nickname: 'isens F&B',
+    img_logo: images.nodes.isensfnb,
+    img_branding: images.nodes.bg_isensfnb
   },
   {
-    account: 'node.conrad',
-    nickname: 'Node Conrad',
-    img_logo: images.nodes.conrad,
-    img_branding: images.nodes.default_branding
+    account: 'metadium',
+    nickname: 'Metadium',
+    img_logo: images.nodes.metadium,
+    img_branding: images.nodes.bg_metadium
   },
   {
-    account: 'node.lucid',
-    nickname: 'Node Lucid',
-    img_logo: images.nodes.lucid,
-    img_branding: images.nodes.default_branding
+    account: 'gamexcoin',
+    nickname: 'GameXCoin',
+    img_logo: images.nodes.gamexcoin,
+    img_branding: images.nodes.bg_gamexcoin
   }
 ];

@@ -4,10 +4,13 @@ export const images = {
   jumboTron: require('../../src/media/images/jumbotron.jpeg'),
 
   nodes: {
-    conrad: require('../../src/media/images/nodes/conrad.jpg'),
-    kai: require('../../src/media/images/nodes/kai.jpg'),
-    jin: require('../../src/media/images/nodes/jin.jpg'),
-    lucid: require('../../src/media/images/nodes/lucid.jpg'),
-    default_branding: require('../../src/media/images/nodes/default_branding.png')
+    gamexcoin: require('../../src/media/images/nodes/gxc.png'),
+    metadium: require('../../src/media/images/nodes/metadium.png'),
+    isensfnb: require('../../src/media/images/nodes/isens.png'),
+    galalab: require('../../src/media/images/nodes/galalab.png'),
+    bg_gamexcoin: require('../../src/media/images/nodes/bg_gxc.png'),
+    bg_metadium: require('../../src/media/images/nodes/bg_metadium.png'),
+    bg_isensfnb: require('../../src/media/images/nodes/bg_isens.png'),
+    bg_galalab: require('../../src/media/images/nodes/bg_galalab.png')
   }
 };
