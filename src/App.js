@@ -11,7 +11,7 @@ import { preload } from './utils/preload';
 import { images } from './constants';
 
 import Routes from './Routes';
-import { Header, Body, Footer } from './components/Layout';
+import { Header, Body, Footer, Splash } from './components/Layout';
 
 @withRouter
 @trackGA
@@ -54,7 +54,7 @@ class App extends Component {
   render() {
     return (
       <div id="app" className={classNames(!this.initialized && 'initializing')}>
-        <div className={classNames('splash', this.initialized && 'hide')} />
+        <Splash className={this.initialized && 'hide'} />
         <Header />
         <Body>
           <Routes />

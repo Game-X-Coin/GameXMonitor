@@ -1,0 +1,18 @@
+@import '../../../styles/variables/all';
+
+.splash {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: $zindex-splash;
+
+  background: $primary;
+  will-change: height;
+  transition: height 1s $ease-in-out-cubic;
+
+  &.hide {
+    height: 0%;
+  }
+}
