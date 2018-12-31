@@ -18,6 +18,10 @@ const Pagination = ({
   const isMin = page === 1;
   const isMax = page === pageCount;
 
+  if (!page || !perPage || !count) {
+    return null;
+  }
+
   return (
     <div className="r-pagination">
       <button
