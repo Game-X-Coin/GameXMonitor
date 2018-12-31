@@ -106,7 +106,7 @@ class BlockPage extends Component {
             <Table
               renderHeader={() => (
                 <tr>
-                  <th>ID</th>
+                  <th width="300">ID</th>
                   <th>Status</th>
                   <th>Total Actions</th>
                   <th>Expiration</th>
@@ -122,7 +122,7 @@ class BlockPage extends Component {
                     } = {}
                   }) => (
                     <tr key={id}>
-                      <td style={{ width: 200, overflow: 'hidden' }}>
+                      <td className="text-truncate">
                         <Link to={`/transactions/${id}`}>{id}</Link>
                       </td>
                       <td>{status}</td>
