@@ -91,39 +91,41 @@ class WelcomePage extends Component {
 
           <Header>Block Producers</Header>
           <div className="row">
-            {producers.map(({ account, nickname, img_logo, img_branding }) => {
-              const isProducing = producer === account;
+            {producers.map(
+              ({ account, nickname, img_logo, img_branding, region }) => {
+                const isProducing = producer === account;
 
-              return (
-                <div className="col-lg-6 col-md-6" key={account}>
-                  <Link className="producer" to={`/accounts/${account}`}>
-                    <div
-                      className="branding"
-                      style={{
-                        backgroundImage: `url(${img_branding})`
-                      }}
-                    >
-                      <img className="logo" src={img_logo} alt={nickname} />
-                    </div>
-                    <div className="content">
-                      <div>
-                        <h5 className="nickname">{nickname}</h5>
-                        <p className="account text-muted">{account}</p>
-                      </div>
-
+                return (
+                  <div className="col-lg-6 col-md-6" key={account}>
+                    <Link className="producer" to={`/accounts/${account}`}>
                       <div
-                        className={classNames(
-                          'status',
-                          isProducing && 'active'
-                        )}
+                        className="branding"
+                        style={{
+                          backgroundImage: `url(${img_branding})`
+                        }}
                       >
-                        {isProducing ? 'Producing' : 'Idle'}
+                        <img className="logo" src={img_logo} alt={nickname} />
                       </div>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })}
+                      <div className="content">
+                        <div>
+                          <h5 className="nickname">{nickname}</h5>
+                          <p className="account text-muted">{region}</p>
+                        </div>
+
+                        <div
+                          className={classNames(
+                            'status',
+                            isProducing && 'active'
+                          )}
+                        >
+                          {isProducing ? 'Producing' : 'Idle'}
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              }
+            )}
           </div>
         </Page>
       </div>
