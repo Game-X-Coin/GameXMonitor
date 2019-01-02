@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RNjsonView from 'react-json-view';
+import { toJS, isObservableObject } from 'mobx';
 
 export default class JsonView extends Component {
   render() {
@@ -11,9 +12,9 @@ export default class JsonView extends Component {
           enableClipboard={false}
           name={false}
           displayDataTypes={false}
-          collapsed={1}
+          collapsed={2}
           collapseStringsAfterLength={100}
-          src={src}
+          src={isObservableObject(src) ? toJS(src) : src}
           {...rest}
         />
       </div>
