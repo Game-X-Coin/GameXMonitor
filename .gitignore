@@ -73,5 +73,8 @@ package-lock.json
 # build folder
 build
 
+# tmp build
+tmpbuild
+
 #env
 .env
