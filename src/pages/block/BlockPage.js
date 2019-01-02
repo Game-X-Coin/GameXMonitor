@@ -47,11 +47,13 @@ class BlockPage extends Component {
       transactions = []
     } = block;
 
+    const isGenesis = block_num === 1;
+
     return (
       <Page>
         {!this.fetched && <LoadingSpinner global />}
 
-        <Header>Block</Header>
+        <Header>{isGenesis ? 'Genesis Block' : 'Block'}</Header>
 
         <Table
           vertical
@@ -68,7 +70,9 @@ class BlockPage extends Component {
               <tr>
                 <th>Previous</th>
                 <td>
-                  <Link to={`/blocks/${previous}`}>{previous}</Link>
+                  {!isGenesis && (
+                    <Link to={`/blocks/${previous}`}>{previous}</Link>
+                  )}
                 </td>
               </tr>
               <tr>
@@ -128,7 +132,7 @@ class BlockPage extends Component {
                       <td>{status}</td>
                       <td>{actions.length}</td>
                       <td>
-                        <Time format="YYYY-MM-DD hh:mm:ss">{expiration}</Time>
+                        <Time>{expiration}</Time>
                       </td>
                     </tr>
                   )
