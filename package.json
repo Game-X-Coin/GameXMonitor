@@ -21,7 +21,7 @@
     "test-coverage": "jest --coverage",
     "coverage": "yarn run test-cover && opn coverage/lcov-report/index.html",
     "start": "webpack-dev-server --inline --hot --config config/webpack.config.dev.js",
-    "build": "rimraf ./build && webpack --config config/webpack.config.prod.js"
+    "build": "webpack --config config/webpack.config.prod.js && rimraf ./build && mv ./tmpbuild ./build"
   },
   "repository": {
     "type": "git",

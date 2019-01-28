@@ -15,10 +15,9 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const Dotenv = require('dotenv-webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); 
 
 function copyPublicFolder() {
-  fs.copySync(paths.appPublic, paths.appBuild, {
+  fs.copySync(paths.appPublic, paths.appTmpBuild, {
     dereference: true,
     filter: file => file !== paths.appHtml
   });
@@ -54,7 +53,7 @@ module.exports = {
   },
   context: paths.appPublic,
   output: {
-    path: paths.appBuild,
+    path: paths.appTmpBuild,
     filename: 'static/js/[name].[chunkhash:8].js',
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     publicPath: publicPath,
