@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container">
         <img className="logo" src={images.logo_footer} alt="logo" />
         <div>
-          <p className="m-0">Ⓒ { year } GXC World Pte Ltd</p>
+          <p className="m-0">Ⓒ {year} GXC World Pte Ltd</p>
         </div>
       </div>
     </footer>
