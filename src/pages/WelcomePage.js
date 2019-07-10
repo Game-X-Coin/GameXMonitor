@@ -9,6 +9,7 @@ import JsonView from '../components/JsonView';
 
 import './WelcomePage.scss';
 import Table from '../components/Table';
+import Time from '../components/Pages/Time';
 import { producers } from '../constants/producers';
 
 @inject('dataStore')
@@ -45,14 +46,17 @@ class WelcomePage extends Component {
             ))}
           </div>
 
-          <Header>Live Transactions</Header>
+          <Header>Live Actions</Header>
           <Table
             renderHeader={() => (
               <tr>
                 <th>Block Height</th>
+                <th>Date</th>
+                <th width="150" style={{}}>
+                  Transaction
+                </th>
                 <th>Contract</th>
                 <th>Action</th>
-                <th width="200">Authorization</th>
                 <th width="400">Data</th>
               </tr>
             )}
@@ -61,6 +65,8 @@ class WelcomePage extends Component {
                 ({
                   _id,
                   block_num,
+                  block_time,
+                  trx_id,
                   act: { account, name, authorization = [], data } = {}
                 }) => (
                   <tr key={_id}>
@@ -68,16 +74,33 @@ class WelcomePage extends Component {
                       <Link to={`/blocks/${block_num}`}>{block_num}</Link>
                     </td>
                     <td>
+                      <Time>{block_time}</Time>
+                    </td>
+                    <td
+                      style={{
+                        // fontSize: '10px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      <Link to={`/transactions/${trx_id}`}>{trx_id}</Link>
+                    </td>
+                    <td>
                       <Link to={`/accounts/${account}`}>{account}</Link>
                     </td>
                     <td>{name}</td>
-                    <td>
+                    {/* <td>
                       {authorization.map(({ permission, actor }) => (
-                        <Link key={actor} to={`/accounts/${actor}`}>
+                        <Link
+                          key={actor}
+                          to={`/accounts/${actor}`}
+                          style={{ display: 'block' }}
+                        >
                           {actor}@{permission}
                         </Link>
                       ))}
-                    </td>
+                    </td> */}
                     <td className="json-data">
                       <JsonView
                         src={data.constructor === Object ? data : { data }}

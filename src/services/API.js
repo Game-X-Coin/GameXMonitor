@@ -35,7 +35,10 @@ export default {
       params: { page, perPage }
     });
   },
-  getAccountBalance: account_name => {
-    return request({ url: `/accounts/${account_name}/balance` });
+  getAccountBalance: (account_name, issuer = 'gxc') => {
+    return request({
+      url: `/accounts/${account_name}/balance?`,
+      params: { issuer, verbose: true }
+    });
   }
 };

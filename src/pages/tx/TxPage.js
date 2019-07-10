@@ -111,7 +111,11 @@ class TxPage extends Component {
                       <td>{name}</td>
                       <td>
                         {authorization.map(({ permission, actor }, ai) => (
-                          <Link key={ai} to={`/accounts/${actor}`}>
+                          <Link
+                            key={ai}
+                            to={`/accounts/${actor}`}
+                            style={{ display: 'block', padding: '2px' }}
+                          >
                             {actor}@{permission}
                           </Link>
                         ))}

@@ -28,6 +28,9 @@ class AccountPage extends Component {
   @observable
   pagination = {};
 
+  @observable
+  balances = {};
+
   componentDidMount() {
     this.request();
   }
@@ -45,17 +48,34 @@ class AccountPage extends Component {
 
     const [
       { result: account },
-      { result: actions, pagination }
-    ] = await Promise.all([API.getAccount(id), API.getAccountActions(id)]);
+      { result: actions, pagination },
+      balances
+    ] = await Promise.all([
+      API.getAccount(id),
+      API.getAccountActions(id),
+      this.getAccountBalances(id)
+    ]);
 
     this.fetched = true;
     this.fetching = false;
 
     this.account = account;
     this.actions = actions;
+    this.balances = balances;
     this.pagination = pagination;
   }
 
+  getAccountBalances(id) {
+    const issuers = ['gxc', 'flyff', 'catfight', 'gamexrogue', 'tcatfight'];
+    return Promise.all(
+      issuers.map(issuer => API.getAccountBalance(id, issuer))
+    ).then(results => {
+      let balances = {};
+      results.map(({ result }) => Object.assign(balances, result));
+      console.log(balances);
+      return balances;
+    });
+  }
   async fetchActions(page) {
     const { id } = this.props.match.params;
 
@@ -84,7 +104,6 @@ class AccountPage extends Component {
     return (
       <Page>
         {this.fetching && <LoadingSpinner global />}
-
         <Header>Account</Header>
         <Table
           vertical
@@ -152,6 +171,32 @@ class AccountPage extends Component {
                 </td>
               </tr>
               <tr>
+                <th>Balances</th>
+                <td>
+                  <Table
+                    style={{ marginBottom: 0 }}
+                    renderHeader={() => (
+                      <tr>
+                        <th style={{ width: 80 }}>issuer</th>
+                        <th>balance</th>
+                      </tr>
+                    )}
+                    renderBody={() =>
+                      Object.entries(this.balances).map(
+                        ([issuer, balances]) => (
+                          <tr key={issuer}>
+                            <td>{issuer}</td>
+                            <td>
+                              <JsonView src={balances} />
+                            </td>
+                          </tr>
+                        )
+                      )
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
                 <th>Created At</th>
                 <td>
                   <Time>{created}</Time>
@@ -160,7 +205,6 @@ class AccountPage extends Component {
             </React.Fragment>
           )}
         />
-
         <Header>Transactions {count ? `(${count})` : ''}</Header>
         {this.fetched &&
           (this.actions.length ? (
